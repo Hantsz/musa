@@ -84,15 +84,19 @@
           "36 - Pärt Uusberg - koorilaul _Muusika_.mp3",
           "05 - Karl August Hermann - koorilaul _Isamaa mälestus_.mp3"
       ];
+
       var currentSongIndex;
+
         function playRandomSong() {
             var audio = document.getElementById("musicPlayer");
             currentSongIndex = Math.floor(Math.random() * songs.length);
             var randomStartTime = Math.floor(Math.random() * audio.duration);
             audio.src = songs[currentSongIndex];
             audio.currentTime = randomStartTime;
+
             // Hide the last revealed song
             document.getElementById("songName").style.display = "none";
+
             audio.oncanplaythrough = function() {
                 audio.play();
                 var remainingTime = Math.max(0, 30000 - (audio.duration - audio.currentTime) * 1000);
@@ -109,17 +113,7 @@
           audio.play();
           var remainingTime = Math.max(0, 30000 - (audio.duration - audio.currentTime) * 1000);
           setTimeout(function(){ audio.pause(); }, 30000);
-        var audio = document.getElementById("musicPlayer");
-        currentSongIndex = Math.floor(Math.random() * songs.length);
-        var randomStartTime = Math.floor(Math.random() * audio.duration);
-        audio.src = songs[currentSongIndex];
-        audio.currentTime = randomStartTime;
-        audio.play();
-
-        var remainingTime = Math.max(0, 30000 - (audio.duration - audio.currentTime) * 1000);
-        setTimeout(function(){ audio.pause(); }, remainingTime);
       }
-
 
       function revealSongName() {
           var songName = document.getElementById("songName");
