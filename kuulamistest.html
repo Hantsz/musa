@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <title>Music Test</title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -17,17 +18,16 @@
         }
         button {
             font-family: 'Poppins', sans-serif;
-            background-color: #4CAF50;
-            color: white;
+            border: 2px solid black;
+            border-radius: 15px;
             padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
             cursor: pointer;
             margin: 10px;
             font-size: 1rem;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: lightblue;
+            color: black;
         }
         #songName {
             margin-top: 20px;
@@ -36,15 +36,15 @@
     </style>
 </head>
 <body>
-    <h1>Kuulamistest</h1>
-    <audio id="musicPlayer" controls>
-        <source id="musicSource" src="https://hantsz.github.io/musa/kuulamistest.html" type="audio/mpeg">
+    <h1 style="margin-bottom: 0cap;">Musa kuulamistest</h1>
+    <h3 style="font-weight: 300;">Mängib suva kohast 30 sekki.</h3>
+    <audio style="padding: 50px;" id="musicPlayer" controls autoplay>
+        <source id="musicSource" src="https://raw.githubusercontent.com/hantsz/musa/main/" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <button onclick="playRandomSong()">Play Random Song</button>
+    <button onclick="playRandomSong()">&#9654; Play Random Song</button>
     <button onclick="revealSongName()">Reveal Song Name</button>
     <p id="songName" style="display: none;"></p>
-
     <script>
         var songs = [
             "06 - Miina Härma - koorilaul _Meeste laul_.mp3",
@@ -93,10 +93,15 @@
             var randomStartTime = Math.floor(Math.random() * audio.duration);
             audio.src = songs[currentSongIndex];
             audio.currentTime = randomStartTime;
-            audio.play();
-            
-            var remainingTime = Math.max(0, 30000 - (audio.duration - audio.currentTime) * 1000);
-            setTimeout(function(){ audio.pause(); }, remainingTime);
+
+            // Hide the last revealed song
+            document.getElementById("songName").style.display = "none";
+
+            audio.oncanplaythrough = function() {
+                audio.play();
+                var remainingTime = Math.max(0, 30000 - (audio.duration - audio.currentTime) * 1000);
+                setTimeout(function() { audio.pause(); }, remainingTime);
+            };
         }
 
         function revealSongName() {
