@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <title>Music Test</title>
     <style>
@@ -11,6 +12,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            margin: 0;
         }
         h1 {
             font-size: 2.5rem;
@@ -33,99 +35,80 @@
             margin-top: 20px;
             font-size: 1.2rem;
         }
+        audio {
+            width: 80%;
+            max-width: 400px;
+        }
     </style>
 </head>
 <body>
-    <h1 style="margin-bottom: 0cap;">Musa kuulamistest</h1>
+    <h1 style="margin-bottom: 0;">Musa kuulamistest</h1>
     <h3 style="font-weight: 300;">Mängib suva kohast 30 sekki.</h3>
-    <audio style="padding: 50px;" id="musicPlayer" controls>
-        <source id="musicSource" src="https://raw.githubusercontent.com/hantsz/musa/main/" type="audio/mpeg">
+    <audio id="musicPlayer" controls>
+        <source id="musicSource" src="" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
     <button onclick="playRandomSong()">Play Random Song</button>
     <button onclick="revealSongName()">Reveal Song Name</button>
     <p id="songName" style="display: none;"></p>
+
     <script>
-      var songs = [
-          "06 - Miina Härma - koorilaul _Meeste laul_.mp3",
-          "08 - Aleksander Läte - koorilaul _Kuldrannake_.mp3",
-          "10 - Mihkel Lüdig - koorilaul _Koit_.mp3",
-          "11 - Artur Kapp - oratoorium _Hiiob_, koor _Suur oled Sa!_.mp3",
-          "12 - Artur Kapp - soololaul _Metsateel_.mp3",
-          "14 - Mart Saar - koorilaul _Põhjavaim_.mp3",
-          "17 - Heino Eller - _Kodumaine viis_, keelpilliorkestrile.mp3",
-          "20 - Gustav Ernesaks - koorilaul _Hakkame mehed minema_.mp3",
-          "21 - Gustav Ernesaks - koorilaul _Mu isamaa on minu arm_.mp3",
-          "23 - Veljo Tormis - koorilaul _Ühtehoidmiselaul_.mp3",
-          "24 - Veljo Tormis - _Jaani hobu_, V osa kooritsüklist _Eesti kalendrilaulud_.mp3",
-          "25 - Eino Tamberg - _Concerto grosso_, I osa.mp3",
-          "28 - Raimo Kangro - _Arcus_ (_Vibu_) sümfooniaorkestrile (katkend).mp3",
-          "30 - Erkki-Sven Tüür - _Ostium_ (_Uks_).mp3",
-          "31 - Erkki-Sven Tüür - _Spectrum I_, orelile.mp3",
-          "32 - Urmas Sisask - Missa nr. 3 _Eesti missa_, osa _Sanctus_.mp3",
-          "34 - Toivo Tulev - _Der Herr ist mein getreuer Hirt, II_ (_Issand on minu ustav karjane_).mp3",
-          "35 - Mart Siimer - koorilaul _Homme_.mp3",
-          "01 - Uuem eesti rahvalik laul (liedertafellik laul) - _Mu isamaa armas_.mp3",
-          "02 - Aleksander Saebelmann-Kunileid - koorilaul _Mu isamaa on minu arm_.mp3",
-          "03 - Aleksander Saebelmann-Kunileid - koorilaul _Sind surmani_.mp3",
-          "04 - Friedrich August Saebelmann - koorilaul _Kaunimad laulud.mp3",
-          "07 - Miina Härma - koorilaul _Tuljak_.mp3",
-          "13 - Mart Saar - soololaul _Must lind_.mp3",
-          "15 - Cyrillus Kreek - koorilaul _Õnnis on inimene_, koorilaulude kogumikust _Taaveti laulud_.mp3",
-          "16 - Cyrillus Kreek - koorilaul _Sirisege, sirisege sirbikesed_.mp3",
-          "33 - Urmas Sisask -  klaveritsükkel _Tähistaeva tsükkel lastele_, 2. pala _Kassiopeia_.mp3",
-          "09 - Rudolf Tobias - oratoorium _Joonase lähetamine_, osa _Sanctus_ (Püha).mp3",
-          "18 - Heino Eller - klaveripala _Liblikas_.mp3",
-          "19 - Eduard Tubin - sümfooniline süit balletist _Kratt_.mp3",
-          "22 - Villem Kapp - kooripoeem _Põhjarannik_.mp3",
-          "26 - Arvo Pärt - _Credo_ (_Usutunnistus_) segakoorile, klaverile ja orkestrile.mp3",
-          "27 - Arvo Pärt - _Fratres_ (_Vennad_) viiulile, keelpilliorkestrile ja löökriistadele.mp3",
-          "29 - Lepo Sumera - klaveriteos _Pala aastast 1981_, 2. pala _..._.mp3",
-          "36 - Pärt Uusberg - koorilaul _Muusika_.mp3",
-          "05 - Karl August Hermann - koorilaul _Isamaa mälestus_.mp3"
-      ];
-      var currentSongIndex;
+        var songs = [
+            "06 - Miina Härma - koorilaul _Meeste laul_.mp3",
+            "08 - Aleksander Läte - koorilaul _Kuldrannake_.mp3",
+            "10 - Mihkel Lüdig - koorilaul _Koit_.mp3",
+            "11 - Artur Kapp - oratoorium _Hiiob_, koor _Suur oled Sa!_.mp3",
+            "12 - Artur Kapp - soololaul _Metsateel_.mp3",
+            "14 - Mart Saar - koorilaul _Põhjavaim_.mp3",
+            "17 - Heino Eller - _Kodumaine viis_, keelpilliorkestrile.mp3",
+            "20 - Gustav Ernesaks - koorilaul _Hakkame mehed minema_.mp3",
+            "21 - Gustav Ernesaks - koorilaul _Mu isamaa on minu arm_.mp3",
+            "23 - Veljo Tormis - koorilaul _Ühtehoidmiselaul_.mp3",
+            "24 - Veljo Tormis - _Jaani hobu_, V osa kooritsüklist _Eesti kalendrilaulud_.mp3",
+            "25 - Eino Tamberg - _Concerto grosso_, I osa.mp3",
+            "28 - Raimo Kangro - _Arcus_ (_Vibu_) sümfooniaorkestrile (katkend).mp3",
+            "30 - Erkki-Sven Tüür - _Ostium_ (_Uks_).mp3",
+            "31 - Erkki-Sven Tüür - _Spectrum I_, orelile.mp3",
+            "32 - Urmas Sisask - Missa nr. 3 _Eesti missa_, osa _Sanctus_.mp3",
+            "34 - Toivo Tulev - _Der Herr ist mein getreuer Hirt, II_ (_Issand on minu ustav karjane_).mp3",
+            "35 - Mart Siimer - koorilaul _Homme_.mp3",
+            "01 - Uuem eesti rahvalik laul (liedertafellik laul) - _Mu isamaa armas_.mp3",
+            "02 - Aleksander Saebelmann-Kunileid - koorilaul _Mu isamaa on minu arm_.mp3",
+            "03 - Aleksander Saebelmann-Kunileid - koorilaul _Sind surmani_.mp3",
+            "04 - Friedrich August Saebelmann - koorilaul _Kaunimad laulud.mp3",
+            "07 - Miina Härma - koorilaul _Tuljak_.mp3",
+            "13 - Mart Saar - soololaul _Must lind_.mp3",
+            "15 - Cyrillus Kreek - koorilaul _Õnnis on inimene_, koorilaulude kogumikust _Taaveti laulud_.mp3",
+            "16 - Cyrillus Kreek - koorilaul _Sirisege, sirisege sirbikesed_.mp3",
+            "33 - Urmas Sisask -  klaveritsükkel _Tähistaeva tsükkel lastele_, 2. pala _Kassiopeia_.mp3",
+            "09 - Rudolf Tobias - oratoorium _Joonase lähetamine_, osa _Sanctus_ (Püha).mp3",
+            "18 - Heino Eller - klaveripala _Liblikas_.mp3",
+            "19 - Eduard Tubin - sümfooniline süit balletist _Kratt_.mp3",
+            "22 - Villem Kapp - kooripoeem _Põhjarannik_.mp3",
+            "26 - Arvo Pärt - _Credo_ (_Usutunnistus_) segakoorile, klaverile ja orkestrile.mp3",
+            "27 - Arvo Pärt - _Fratres_ (_Vennad_) viiulile, keelpilliorkestrile ja löökriistadele.mp3",
+            "29 - Lepo Sumera - klaveriteos _Pala aastast 1981_, 2. pala _..._.mp3",
+            "36 - Pärt Uusberg - koorilaul _Muusika_.mp3",
+            "05 - Karl August Hermann - koorilaul _Isamaa mälestus_.mp3"
+        ];
+
+        var currentSongIndex;
+
         function playRandomSong() {
             var audio = document.getElementById("musicPlayer");
             currentSongIndex = Math.floor(Math.random() * songs.length);
-            var randomStartTime = Math.floor(Math.random() * audio.duration);
-            audio.src = songs[currentSongIndex];
-            audio.currentTime = randomStartTime;
-            // Hide the last revealed song
-            document.getElementById("songName").style.display = "none";
-            audio.oncanplaythrough = function() {
-                audio.play();
-                var remainingTime = Math.max(0, 30000 - (audio.duration - audio.currentTime) * 1000);
-                setTimeout(function() { audio.pause(); }, remainingTime);
-    };
-}
+            audio.src = "https://raw.githubusercontent.com/hantsz/musa/main/" + songs[currentSongIndex];
+            audio.play();
+            setTimeout(function() {
+                audio.pause();
+            }, 30000);
+        }
 
-      function playRandomSong() {
-          var audio = document.getElementById("musicPlayer");
-          currentSongIndex = Math.floor(Math.random() * songs.length);
-          var randomStartTime = Math.floor(Math.random() * audio.duration);
-          audio.src = "" + songs[currentSongIndex]; // Replace "path_to_your_music_folder" with the actual path
-          audio.currentTime = randomStartTime;
-          audio.play();
-          var remainingTime = Math.max(0, 30000 - (audio.duration - audio.currentTime) * 1000);
-          setTimeout(function(){ audio.pause(); }, 30000);
-         var audio = document.getElementById("musicPlayer");
-        currentSongIndex = Math.floor(Math.random() * songs.length);
-        var randomStartTime = Math.floor(Math.random() * audio.duration);
-        audio.src = songs[currentSongIndex];
-        audio.currentTime = randomStartTime;
-        audio.play();
-
-        var remainingTime = Math.max(0, 30000 - (audio.duration - audio.currentTime) * 1000);
-        setTimeout(function(){ audio.pause(); }, remainingTime);
-      }
-
-
-      function revealSongName() {
-          var songName = document.getElementById("songName");
-          songName.style.display = "block";
-          songName.innerHTML = songs[currentSongIndex];
-      }
-  </script>
+        function revealSongName() {
+            var songName = document.getElementById("songName");
+            songName.style.display = "block";
+            songName.innerHTML = songs[currentSongIndex];
+        }
+    </script>
 </body>
-</html>
+</html
