@@ -85,7 +85,7 @@
           "05 - Karl August Hermann - koorilaul _Isamaa mälestus_.mp3"
       ];
 
-      var currentSongIndex;
+     var currentSongIndex;
 
       function playRandomSong() {
           var audio = document.getElementById("musicPlayer");
@@ -106,15 +106,15 @@
           }
     
           audio.play();
-    
+          
           setTimeout(function(){ audio.pause(); }, 30000);
-  }
+      }
 
-  function revealSongName() {
-      var songName = document.getElementById("songName");
-      songName.style.display = "block";
-      songName.innerHTML = songs[currentSongIndex];
-  }
-</script>
+      function revealSongName() {
+          var songName = document.getElementById("songName");
+          songName.style.display = "block";
+          songName.innerHTML = songs[currentSongIndex];
+      }
+    </script>
 </body>
 </html>
