@@ -95,6 +95,7 @@
           audio.src = "" + songs[currentSongIndex]; // Replace "path_to_your_music_folder" with the actual path
           audio.currentTime = randomStartTime;
           audio.play();
+          var remainingTime = Math.max(0, 30000 - (audio.duration - audio.currentTime) * 1000);
           setTimeout(function(){ audio.pause(); }, 30000);
       }
 
