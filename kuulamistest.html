@@ -5,24 +5,35 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <title>Kuulamistest</title>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            width: 100vw;
-            padding-left: 100px;
-            padding-right: 100px;
-        }
+        
+body {
+    background-color: rgb(224, 224, 224);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0 20px; /* Adjust the padding for both left and right sides */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+    body {
+        padding: 0 10px; /* Adjust the padding for smaller screens */
+        text-align: center; /* Align text to the center for mobile devices */
+    }
+}
+
         h1 {
             font-size: 2.5rem;
+            text-transform:uppercase;
+            font-weight: 900;
         }
         button {
             font-family: 'Poppins', sans-serif;
-            border: 2px solid black;
-            border-radius: 15px;
+            border: 1,5px solid black;
+            border-radius: 10px;
             padding: 12px 20px;
             cursor: pointer;
             margin: 10px;
@@ -40,13 +51,13 @@
 </head>
 <body>
     <h1 style="margin-bottom: 0cap;">Musa kuulamistest</h1>
-    <h3 style="font-weight: 300;">Mängib suva kohast 30 sekki.</h3>
+    <h3 style="font-weight: 300; text-align: center;">Mängib alates suvalisest kohast.<br>30 sekundit.</br></h3>
     <audio style="padding: 50px;" id="musicPlayer" controls autoplay>
         <source id="musicSource" src="https://raw.githubusercontent.com/hantsz/musa/main/" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <button onclick="playRandomSong()">&#9654; Play Random Song</button>
-    <button onclick="revealSongName()">Reveal Song Name</button>
+    <button onclick="playRandomSong()">&#9654; Järgmine laul</button>
+    <button onclick="revealSongName()">Laulu nimi</button>
     <p id="songName" style="display: none;"></p>
     <script>
         var songs = [
