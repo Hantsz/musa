@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-    <title>Music Test</title>
+    <title>Kuulamistest</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -89,21 +89,28 @@
         ];
 
         var currentSongIndex;
+        var timeoutId;
 
         function playRandomSong() {
             var audio = document.getElementById("musicPlayer");
             currentSongIndex = Math.floor(Math.random() * songs.length);
-            var randomStartTime = Math.floor(Math.random() * audio.duration);
             audio.src = songs[currentSongIndex];
-            audio.currentTime = randomStartTime;
+            audio.currentTime = 0;
 
-            // Hide the last revealed song
-            document.getElementById("songName").style.display = "none";
+            audio.onloadedmetadata = function() {
+                var randomStartTime = Math.floor(Math.random() * (audio.duration - 30));
+                while (randomStartTime >= audio.duration) {
+                    randomStartTime = Math.floor(Math.random() * (audio.duration - 30));
+                }
+                audio.currentTime = parseFloat(randomStartTime);
 
-            audio.oncanplaythrough = function() {
-                audio.play();
-                var remainingTime = Math.max(0, 30000 - (audio.duration - audio.currentTime) * 1000);
-                setTimeout(function() { audio.pause(); }, remainingTime);
+                document.getElementById("songName").style.display = "none";
+
+                audio.oncanplaythrough = function() {
+                    audio.play();
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(() => { audio.pause(); }, 30000);
+                };
             };
         }
 
