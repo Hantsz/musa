@@ -91,9 +91,20 @@
         var currentSongIndex;
         var timeoutId;
 
+        let currentIndex = -1;
+        let playedIndexes = [];
+
         function playRandomSong() {
+            if (playedIndexes.length === songs.length) {
+                playedIndexes = [];
+            }
+            let randomIndex = Math.floor(Math.random() * songs.length);
+            while (playedIndexes.includes(randomIndex)) {
+            randomIndex = Math.floor(Math.random() * songs.length);
+            }
+            playedIndexes.push(randomIndex);
             var audio = document.getElementById("musicPlayer");
-            currentSongIndex = Math.floor(Math.random() * songs.length);
+            currentSongIndex = randomIndex;
             audio.src = songs[currentSongIndex];
             audio.currentTime = 0;
 
