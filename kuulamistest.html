@@ -44,6 +44,8 @@
         #songName {
             margin-top: 20px;
             font-size: 0.9rem;
+            position: absolute;
+            height: 45px;
         }
         audio::-webkit-media-controls-current-time-display,
         audio::-webkit-media-controls-time-remaining-display {
@@ -140,6 +142,10 @@
 
         function revealSongName() {
             var songName = document.getElementById("songName");
+            console.log(songName.textContent)
+            var removeNum = songName.textContent.slice(5);
+            var eemaldaMp3 = removeNum.replace(".mp3", "");
+            console.log(eemaldaMp3)
             songName.style.display = "block";
             songName.innerHTML = songs[currentSongIndex];
         }
