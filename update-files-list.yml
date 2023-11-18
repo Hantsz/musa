@@ -1,0 +1,26 @@
+name: Update Files List
+
+on:
+  push:
+    paths:
+      - './songs/*' # Update with your MP3 files path
+
+jobs:
+  update-list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List MP3 files
+        run: |
+          find ./songs/ -type f -name "*.mp3" > mp3_files_list.txt # Generate a list of MP3 files
+
+      - name: Save list to JSON file
+        run: echo '{"mp3Files":' > files.json && cat mp3_files_list.txt | jq -R . | jq -s -R 'split("\n")[:-1]' >> files.json && echo '}' >> files.json
+
+      - name: Commit changes
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+
+          git add files.json
+          git commit -m "Update MP3 files list" || echo "No changes to commit"
+          git push
