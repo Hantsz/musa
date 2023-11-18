@@ -1,0 +1,46 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 10px; /* Adjust the right padding as needed */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+h3 {
+    text-align: center;
+    font-size: 16px;
+}
+button {
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 8px;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 14px;
+    width: 250px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+button:hover {
+    background-color: rgb(4, 35, 58);
+    color: rgb(255, 255, 255);
+}
+#songName {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    position: absolute;
+    height: 50px;
+}
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    display: none;
+}
