@@ -2,20 +2,68 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/445c1af3dc.js" crossorigin="anonymous"></script>
     <title>Kuulamistest</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js"></script>
 </head>
 <body>
-    <h1 style="margin-bottom: 0cap;">Musa kuulamistest</h1>
-    <h3 style="font-weight: 300;">Mängib juhuslikust kohast 30 sekundit.<br>Laulu nägemiseks vajuta "Laulu nimi" nuppu.</h3>
-    <audio style="margin: 50px;" id="musicPlayer" controls controlsList="autoplay nodownload noplaybackrate">
-        <source id="musicSource" src="https://raw.githubusercontent.com/hantsz/musa/main/" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    <button onclick="playRandomSong()">&#9654; Järgmine laul</button>
-    <button onclick="revealSongName()">Laulu nimi</button>
-    <p id="songName" style="display: none;"></p>
+  <div class="row">
+    <div class="column info_box">
+      <h1>Muusika<br>kuulamistest</h1>
+      <h3>Lastakse juhuslik muusikapala juhusliku koha pealt.<br>Muusikapala mängib 30 sekundit.</h3>
+      <div class="audio-container">
+        <audio id="musicPlayer" controls controlsList="autoplay nodownload noplaybackrate">
+          <source id="musicSource" src="https://raw.githubusercontent.com/hantsz/musa/main/" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <button onclick="playRandomSong()" type="button" name="reveal_song">Järgmine laul</button>
+        <button onclick="revealSongName()" type="button" name="reveal_song">Laulu nimi</button>
+      </div>
+      <h2 id="song-reveal" class="song-reveal"></h2>    
+    </div>
+    <div class="column song_list">
+      <p>
+        "Meeste laul" - Miina Härma,<br>
+        "Kuldrannake" - Aleksander Läte,<br>
+        "Koit" - Mihkel Lüdig,<br>
+        "Suur oled Sa!" - Artur Kapp,<br>
+        "Metsateel" - Artur Kapp,<br>
+        "Põhjavaim" - Mart Saar,<br>
+        "Kodumaine viis" - Heino Eller,<br>
+        "Hakkame mehed minema" - Gustav Ernesaks,<br>
+        "Mu isamaa on minu arm" - Gustav Ernesaks,<br>
+        "Ühtehoidmiselaul" - Veljo Tormis,<br>
+        "Jaani hobu" - Veljo Tormis,<br>
+        "Concerto grosso" - Eino Tamberg,<br>
+        "Arcus" (Vibu) - Raimo Kangro,<br>
+        "Ostium" (Uks) - Erkki-Sven Tüür,<br>
+        "Spectrum I" - Erkki-Sven Tüür,<br>
+        "Missa nr. 3 Eesti missa, osa Sanctus" - Urmas Sisask,<br>
+        "Der Herr ist mein getreuer Hirt, II (Issand on minu ustav karjane)" - Toivo Tulev,<br>
+        "Homme" - Mart Siimer,<br>
+        "Mu isamaa armas" - Uuem eesti rahvalik laul,<br>
+        "Mu isamaa on minu arm" - Aleksander Saebelmann-Kunileid,<br>
+        "Sind surmani" - Aleksander Saebelmann-Kunileid,<br>
+        "Kaunimad laulud" - Friedrich August Saebelmann,<br>
+        "Tuljak" - Miina Härma,<br>
+        "Must lind" - Mart Saar,<br>
+        "Õnnis on inimene" - Cyrillus Kreek,<br>
+        "Sirisege, sirisege sirbikesed" - Cyrillus Kreek,<br>
+        "Tähistaeva tsükkel lastele, 2. pala Kassiopeia" - Urmas Sisask,<br>
+        "Joonase lähetamine, osa Sanctus (Püha)" - Rudolf Tobias,<br>
+        "Liblikas" - Heino Eller,<br>
+        "Sümfooniline süit balletist Kratt" - Eduard Tubin,<br>
+        "Põhjarannik" - Villem Kapp,<br>
+        "Credo (Usutunnistus)" - Arvo Pärt,<br>
+        "Fratres (Vennad)" - Arvo Pärt,<br>
+        "Pala aastast 1981, 2. pala ..." - Lepo Sumera,<br>
+        "Muusika" - Pärt Uusberg,<br>
+        "Isamaa mälestus" - Karl August Hermann
+      </p>
+    </div>
+  </div>
 </body>
 </html>
