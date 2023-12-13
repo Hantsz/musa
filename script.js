@@ -44,6 +44,8 @@ var songs = [
         let playedIndexes = [];
 
         function playRandomSong() {
+            var songName = document.getElementById("song-reveal");
+            songName.style.opacity = 0;
             if (playedIndexes.length === songs.length) {
                 playedIndexes = [];
             }
@@ -78,4 +80,10 @@ var songs = [
             var songName = document.getElementById("song-reveal");
             songName.style.display = "block";
             songName.innerHTML = songs[currentSongIndex].replace(".mp3", "").slice(12).replace(/_/g, '"');;
+            songName.style.opacity = 0;
+            setTimeout(() => {
+                songName.style.opacity = 1;
+            }, 10);
+            var songNameHeight = songName.scrollHeight;
+            songRevealContainer.style.height = songNameHeight + 'px';
         }
