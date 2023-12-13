@@ -19,9 +19,10 @@
           <source id="musicSource" src="https://raw.githubusercontent.com/hantsz/musa/main/" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
+        <button onclick="playRandomSong()" type="button" name="reveal_song">Järgmine laul</button>
         <button onclick="revealSongName()" type="button" name="reveal_song">Laulu nimi</button>
       </div>
-      <h2 class="song-reveal">Der Herr ist mein getreuer Hirt, II (Issand on minu ustav karjane)" - Toivo Tulev</h2>    
+      <h2 id="song-reveal" class="song-reveal"></h2>    
     </div>
     <div class="column song_list">
       <p>

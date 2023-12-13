@@ -64,7 +64,7 @@ var songs = [
                 }
                 audio.currentTime = parseFloat(randomStartTime);
 
-                document.getElementById("songName").style.display = "none";
+                document.getElementById("song-reveal").style.display = "none";
 
                 audio.oncanplaythrough = function() {
                     audio.play();
@@ -75,7 +75,7 @@ var songs = [
         }
 
         function revealSongName() {
-            var songName = document.getElementById("songName");
+            var songName = document.getElementById("song-reveal");
             songName.style.display = "block";
             songName.innerHTML = songs[currentSongIndex].replace(".mp3", "").slice(12).replace(/_/g, '"');;
         }

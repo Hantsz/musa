@@ -63,12 +63,13 @@ button {
   width: 250px;
   cursor: pointer;
   transition: 0.6s;
+  margin-right: 10px;
 }
 
 button:hover {
   color: #ffffff;
   background-color: #000000;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .audio-container {
