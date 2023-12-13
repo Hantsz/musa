@@ -15,14 +15,18 @@
       <h1>Muusika<br>kuulamistest</h1>
       <h3>Lastakse juhuslik muusikapala juhusliku koha pealt.<br>Muusikapala mängib 30 sekundit.</h3>
       <div class="audio-container">
+        <div class="row" style="margin-bottom: 25px;">
+          <button onclick="playRandomSong()" type="button" name="reveal_song">Järgmine laul</button>
+          <button onclick="revealSongName()" type="button" name="reveal_song">Laulu nimi</button>
+        </div>
         <audio id="musicPlayer" controls controlsList="autoplay nodownload noplaybackrate">
           <source id="musicSource" src="https://raw.githubusercontent.com/hantsz/musa/main/" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
-        <button onclick="playRandomSong()" type="button" name="reveal_song">Järgmine laul</button>
-        <button onclick="revealSongName()" type="button" name="reveal_song">Laulu nimi</button>
       </div>
-      <h2 id="song-reveal" class="song-reveal"></h2>    
+      <div class="song-reveal-container">
+        <h2 id="song-reveal" class="song-reveal"></h2>    
+      </div>
     </div>
     <div class="column song_list">
       <p>
